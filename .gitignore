@@ -1,0 +1,5 @@
+vendor/*
+target/*
+*.swp
+*.swo
+composer.lock

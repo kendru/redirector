@@ -12,7 +12,7 @@ namespace Redirector;
 class App
 {
     /** @var string The root directory of the application */
-    private $root_path;
+    priVate $root_path;
 
     /** @var Twig_Environment */
     private $twig;
