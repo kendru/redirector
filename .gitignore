@@ -3,3 +3,4 @@ build/*
 *.swp
 *.swo
 composer.lock
+autotest_watchr.rb

@@ -17,8 +17,9 @@ class App
     /** @var Twig_Environment */
     private $twig;
 
-    function __construct($base_path)
+    function __construct()
     {
+
     }
 
     public function setRootPath($root_path)
