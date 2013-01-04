@@ -1,5 +1,5 @@
 vendor/*
-target/*
+build/*
 *.swp
 *.swo
 composer.lock
