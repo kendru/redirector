@@ -1,0 +1,17 @@
+ERROR - 2013-01-04T13:34:55-07:00 - exception 'RuntimeException' with message 'Unable to create the cache directory (/home/andrew/workspace/redirector/templates/cache/bd/c9).' in /home/andrew/workspace/redirector/vendor/twig/twig/lib/Twig/Environment.php:1087
+Stack trace:
+#0 /home/andrew/workspace/redirector/vendor/twig/twig/lib/Twig/Environment.php(330): Twig_Environment->writeCacheFile('/home/andrew/wo...', '<?php??/* index...')
+#1 /home/andrew/workspace/redirector/vendor/slim/extras/Slim/Extras/Views/Twig.php(97): Twig_Environment->loadTemplate('index.html')
+#2 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/View.php(195): Slim\Extras\Views\Twig->render('index.html')
+#3 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/View.php(182): Slim\View->fetch('index.html')
+#4 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Slim.php(672): Slim\View->display('index.html')
+#5 /home/andrew/workspace/redirector/public/index.php(26): Slim\Slim->render('index.html')
+#6 [internal function]: {closure}()
+#7 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Router.php(172): call_user_func_array(Object(Closure), Array)
+#8 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Slim.php(1222): Slim\Router->dispatch(Object(Slim\Route))
+#9 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Middleware/Flash.php(86): Slim\Slim->call()
+#10 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Middleware/MethodOverride.php(94): Slim\Middleware\Flash->call()
+#11 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Middleware/PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#12 /home/andrew/workspace/redirector/vendor/slim/slim/Slim/Slim.php(1174): Slim\Middleware\PrettyExceptions->call()
+#13 /home/andrew/workspace/redirector/public/index.php(30): Slim\Slim->run()
+#14 {main}

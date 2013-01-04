@@ -1,5 +1,7 @@
 vendor/*
 build/*
+logs/*
+templates/cache/
 *.swp
 *.swo
 composer.lock

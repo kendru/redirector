@@ -12,14 +12,14 @@ namespace Redirector;
 class App
 {
     /** @var string The root directory of the application */
-    priVate $root_path;
-
-    /** @var Twig_Environment */
-    private $twig;
+    private $root_path;
 
     function __construct()
     {
+    }
 
+    function init()
+    {
     }
 
     public function setRootPath($root_path)

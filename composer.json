@@ -2,9 +2,10 @@
     "name": "ameredith/redirector",
     "require": {
         "slim/slim": "2.*",
-        "twig/twig": "1.*",
-        "j4mie/idiorm": "v1.2.3",
-        "j4mie/paris": "v1.2.0"
+        "slim/extras": "2.0.1",
+        "twig/twig": "v1.11.1",
+        "symfony/yaml": "v2.1.6",
+        "dccampbell/idiormparis": "v1.2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"

@@ -1,124 +1,107 @@
 {
-    "hash": "65b46bae2427a7a40eaebe500a9549a9",
+    "hash": "d5aeec63f4246b299351ea2dfe34067d",
     "packages": [
         {
-            "name": "j4mie/idiorm",
-            "version": "v1.2.3",
+            "name": "dccampbell/idiormparis",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/j4mie/idiorm",
-                "reference": "v1.2.3"
+                "url": "https://github.com/dccampbell/idiormparis.git",
+                "reference": "v1.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/j4mie/idiorm/archive/v1.2.3.zip",
-                "reference": "v1.2.3",
+                "url": "https://github.com/dccampbell/idiormparis/zipball/v1.2.0",
+                "reference": "v1.2.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
             },
-            "time": "2012-11-28 10:44:18",
+            "time": "2012-11-01 14:38:05",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "idiorm.php"
+                "classmap": [
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-2-Clause",
-                "BSD-3-Clause",
-                "BSD-4-Clause"
+                "BSD"
             ],
             "authors": [
                 {
-                    "name": "Simon Holywell",
-                    "email": "treffynnon@php.net",
-                    "homepage": "http://simonholywell.com",
-                    "role": "Maintainer"
-                },
-                {
                     "name": "Jamie Matthews",
                     "email": "jamie.matthews@gmail.com",
-                    "homepage": "http://j4mie.org",
-                    "role": "Developer"
+                    "homepage": "http://j4mie.org/",
+                    "role": "Creator"
                 },
                 {
-                    "name": "Durham Hale",
-                    "email": "me@durhamhale.com",
-                    "homepage": "http://durhamhale.com",
-                    "role": "Maintainer"
+                    "name": "David C. Campbell",
+                    "email": "david@dccampbell.com",
+                    "homepage": "http://www.dccampbell.com/"
                 }
             ],
-            "description": "A lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5",
-            "homepage": "http://j4mie.github.com/idiormandparis",
+            "description": "Idiorm and Paris -- An ORM/Active-Record Combo -- packaged for easy autoloading.",
+            "homepage": "http://github.com/dccampbell/idiormparis",
             "keywords": [
+                "database",
                 "orm",
-                "query builder",
-                "idiorm"
+                "activerecord",
+                "idiorm",
+                "paris"
             ]
         },
         {
-            "name": "j4mie/paris",
-            "version": "v1.2.0",
+            "name": "slim/extras",
+            "version": "2.0.1",
+            "target-dir": "Slim/Extras",
             "source": {
                 "type": "git",
-                "url": "https://github.com/j4mie/paris",
-                "reference": "v1.2.0"
+                "url": "https://github.com/codeguy/Slim-Extras",
+                "reference": "2.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/j4mie/paris/archive/v1.2.0.zip",
-                "reference": "v1.2.0",
+                "url": "https://github.com/codeguy/Slim-Extras/zipball/2.0.1",
+                "reference": "2.0.1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0",
-                "j4mie/idiorm": "1.2.*"
+                "slim/slim": ">=2.0.0",
+                "php": ">=5.3.0"
             },
-            "time": "2012-11-14 16:58:08",
+            "time": "2012-10-26 03:19:35",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "files": [
-                    "paris.php"
-                ]
+                "psr-0": {
+                    "Twig_Extensions_": "Views/Extension/",
+                    "Slim\\Extras": "."
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-2-Clause",
-                "BSD-3-Clause",
-                "BSD-4-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Simon Holywell",
-                    "email": "treffynnon@php.net",
-                    "homepage": "http://simonholywell.com",
-                    "role": "Maintainer"
+                    "name": "Andrew Smith",
+                    "email": "a.smith@silentworks.co.uk",
+                    "homepage": "http://www.silentworks.co.uk/"
                 },
                 {
-                    "name": "Jamie Matthews",
-                    "email": "jamie.matthews@gmail.com",
-                    "homepage": "http://j4mie.org",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Durham Hale",
-                    "email": "me@durhamhale.com",
-                    "homepage": "http://durhamhale.com",
-                    "role": "Maintainer"
+                    "name": "Josh Lockhart",
+                    "email": "info@joshlockhart.com",
+                    "homepage": "http://www.joshlockhart.com/"
                 }
             ],
-            "description": "A lightweight Active Record implementation for PHP5, built on top of Idiorm",
-            "homepage": "http://j4mie.github.com/idiormandparis",
+            "description": "Extras package for the Slim Framework",
+            "homepage": "http://github.com/codeguy/Slim-Extras",
             "keywords": [
-                "orm",
-                "Active Record",
-                "model",
-                "paris"
+                "templating",
+                "extensions"
             ]
         },
         {
