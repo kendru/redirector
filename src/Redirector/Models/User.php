@@ -6,14 +6,23 @@
 
 namespace Redirector\Models;
 
+use \Illuminate\Hashing\BcryptHasher;
+
 class User extends \Model
 {
     public static $_table = 'users';
 
-    public function save()
+    public function __construct()
     {
-        // Validate data
-        return parent::save();
     }
 
+    public function __set($attr, $val)
+    {
+        if ($attr == 'password') {
+            $hasher = new BcryptHasher();
+            $this->password_digest = $hasher->make($val);
+        } else {
+            parent::__set($attr, $val);
+        }
+    }
 }

@@ -1,19 +1,21 @@
-CREATE DATABASE redirector DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS redirector DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE redirector;
 CREATE TABLE IF NOT EXISTS users (
     id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     fname VARCHAR(30) NULL,
     lname VARCHAR(45) NULL,
     email VARCHAR(256) NOT NULL,
-    password_digest VARCHAR(256) NOT NULL
+    password_digest VARCHAR(256) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE INDEX ON users (email);
 
 CREATE TABLE IF NOT EXISTS redirects (
     id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     alias VARCHAR(99) NOT NULL,
     dest VARCHAR(800) NOT NULL,
-    is_regex BOOLEAN NOT NULL DEFAULT FALSE
+    is_regex BOOLEAN NOT NULL DEFAULT FALSE,
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE INDEX ON redirects (alias);
+
+CREATE UNIQUE INDEX alias_redirects ON redirects (alias);
+CREATE UNIQUE INDEX email_users ON users (email);

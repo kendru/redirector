@@ -1,9 +1,9 @@
 <?php
 require_once 'vendor/autoload.php';
+include_once 'tests/helpers/config.php';
 
 use Redirector\Models\User;
-use Symfony\Component\Yaml\Yaml;
-    
+
 /**
  * Tests for App.php
  **/
@@ -11,12 +11,18 @@ class UserTest extends PHPUnit_Framework_TestCase
 {
     protected $user;
 
+    public static function setUpBeforeClass()
+    {
+        global $config;
+        $db = (object) $config['db'];
+        $dsn = "{$db->protocol}:host={$db->host};dbname={$db->database}";
+        \ORM::configure($dsn);
+        \ORM::configure('username', $db->user);
+        \ORM::configure('password', $db->password);
+    }
     protected function setUp()
     {
-        putenv('DB=mysql');
-        putenv('APP_ENV=test');
         $this->user = \Model::factory('\Redirector\Models\User')->create();
-
     }
 
     public function testInheritsFromModel()
@@ -32,8 +38,7 @@ class UserTest extends PHPUnit_Framework_TestCase
         $this->user->lname = "Smith";
         $this->user->email = "jsmith@example.com";
         $this->user->password = "secret";
-        $this->user->password_confirmation = "secret";
-        $this->assertTrue($user->save());
+        $this->assertTrue($this->user->save());
     }
 
     protected function tearDown()
