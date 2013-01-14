@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block title %}Log In{% endblock %}
+{% block title %}New User{% endblock %}
 {% block head %}
 <style>
 .form-signin {
@@ -31,13 +31,15 @@ padding: 7px 9px;
 {% endblock %}
 
 {% block content %}
-<form action="/admin/sessions/" method="post" class="form-signin">
-<h2 class="form-signin-heading">Please sign in</h2>
+<form action="/admin/users/" method="post" class="form-signin">
+<h2 class="form-signin-heading">New User</h2>
+<input name="fname" type="text" class="input-block-level" placeholder="First Name">
+<input name="lname" type="text" class="input-block-level" placeholder="Last Name">
 <input name="email" type="text" class="input-block-level" placeholder="Email address">
 <input name="password" type="password" class="input-block-level" placeholder="Password">
 <!--<label class="checkbox">
   <input type="checkbox" value="remember-me"> Remember me
 </label>-->
-<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+<button class="btn btn-large btn-primary" type="submit">Create</button>
 </form>
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block title %}Redirect Rules{% endblock %}
+
+{% block content %}
+<h1>Redirects</h1>
+<a href="/admin/redirects/new/" class="btn btn-success"><i class="icon-plus"></i> Add Redirect</a>
+
+<div class="row">
+    <div class="span6">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th id="redirect-remove"><i class="icon-trash"></i> Remove</th>
+                    <th id="redirect-edit"><i class="icon-edit"></i> View/Edit</th>
+                    <th id="redirect-alias">Alias</th>
+                    <th id="redirect-dest">Destination</th>
+                    <th id="redirect-hits">Hits</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th><i class="icon-trash"></i> Remove</th>
+                    <th><i class="icon-edit"></i> View/Edit</th>
+                    <th>Alias</th>
+                    <th>Destination</th>
+                    <th>Hits</th>
+                </tr>
+            </tfoot>
+            <tbody>
+            {% for rule in redirects %}
+                <tr class="redirect-rule">
+                    <td>
+                    {% if rule.mine or admin %}
+                        <form action="/admin/redirects/{{rule.id}}" method="post">
+                            <input name="_METHOD" type="hidden" value="DELETE" />
+                            <input name="id" type="hidden" value="{{redirect.id}}" />
+                            <button class="btn btn-danger" title="Caution: NO UNDO!" type="submit"><i class="icon-trash"></i> Remove</button>
+                        </form>
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if rule.mine or admin %}
+                        <a href="/admin/redirects/edit/{{rule.id}}" class="btn btn-primary"><i class="icon-edit"></i> Edit</a>
+                    {% else %}
+                        <a href="/admin/redirects/{{rule.id}}" class="btn"><i class="icon-eye-open"></i> View</a>
+                    {% endif %}
+                    </td>
+                    <td>{{rule.alias}}</td>
+                    <td>{{rule.dest}}</td>
+                    <td>{% if rule.hits %}{{rule.hits}}{% else %}0{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

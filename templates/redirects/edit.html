@@ -1,0 +1,75 @@
+{% extends "layouts/main.html" %}
+
+{% block title %}Edit Redirect Rule: {{ redirect.alias }}{% endblock %}
+{% block head %}
+<style>
+.form-signin {
+max-width: 300px;
+padding: 19px 29px 29px;
+margin: 0 auto 20px;
+background-color: #fff;
+border: 1px solid #e5e5e5;
+-webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+        border-radius: 5px;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+margin-bottom: 10px;
+}
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+font-size: 16px;
+height: auto;
+margin-bottom: 15px;
+padding: 7px 9px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="form-signin">
+<form action="/admin/redirects/{{ redirect.id }}/" method="post">
+<h2 class="form-signin-heading">Edit Redirect Rule</h2>
+<input name="_METHOD" type="hidden" value="PUT" />
+<input name="id" type="hidden" value="{{redirect.id}}" />
+<input name="alias" type="text" class="input-block-level" value="{{redirect.alias}}" />
+<input name="dest" type="text" class="input-block-level" value="{{redirect.dest}}" />
+{% if redirect.hits %}
+<p>Hits: 
+    {{redirect.hits}}
+    {% if redirect.hits_qr %}({{redirect.hits_qr}} from QR){% endif %}
+</p>
+{% endif%}
+<p>
+    Created By: {{owner.fname}} {{owner.lname}}
+</p>
+
+<button class="btn btn-large btn-primary" type="submit">Submit</button>
+</form>
+<form action="/admin/redirects/{{ redirect.id }}" method="post">
+    <input name="_METHOD" type="hidden" value="DELETE" />
+    <input name="id" type="hidden" value="{{redirect.id}}" />
+    <button class="btn btn-large btn-danger" title="Caution: NO UNDO!" type="submit">Remove</button>
+</form>
+</div>
+
+<div id="qr-codes" class="row-fluid">
+    <header>
+        <h2>QR Codes:</h2>
+        <p class="small"><em>Right-click and select "Save As" to download</em></p>
+    </header>
+    <div class="span3">
+        <a href="{{ fullurl ~ '?source=qr' }}"><img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{ fullurl ~ '?source=qr' | url_encode }}" alt="Small QR" title="Small" /></a>
+    </div>
+    <div class="span3">
+        <a href="{{ fullurl ~ '?source=qr' }}"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{ fullurl ~ '?source=qr' | url_encode }}" alt="Medium QR" title="Medium" /></a>
+    </div>
+    <div class="span3">
+        <a href="{{ fullurl ~ '?source=qr' }}"><img src="https://chart.googleapis.com/chart?chs=450x450&cht=qr&chl={{ fullurl ~ '?source=qr' | url_encode }}" alt="Large QR" title="Large" /></a>
+    </div>
+</div>
+{% endblock %}

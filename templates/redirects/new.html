@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block title %}Log In{% endblock %}
+{% block title %}New Redirect Rule{% endblock %}
 {% block head %}
 <style>
 .form-signin {
@@ -31,13 +31,11 @@ padding: 7px 9px;
 {% endblock %}
 
 {% block content %}
-<form action="/admin/sessions/" method="post" class="form-signin">
-<h2 class="form-signin-heading">Please sign in</h2>
-<input name="email" type="text" class="input-block-level" placeholder="Email address">
-<input name="password" type="password" class="input-block-level" placeholder="Password">
-<!--<label class="checkbox">
-  <input type="checkbox" value="remember-me"> Remember me
-</label>-->
-<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+<form action="/admin/redirects/" method="post" class="form-signin">
+<h2 class="form-signin-heading">New Redirect Rule</h2>
+<input name="alias" type="text" class="input-block-level" placeholder="Alias" maxlength="30" />
+<input name="dest" type="text" class="input-block-level" placeholder="Destination" title="Remember to include the http:// or https:// on your destination.">
+<span class="help-block">Remember to include the http:// or https:// on your destination.</span>
+<button class="btn btn-large btn-primary" type="submit">Submit</button>
 </form>
 {% endblock %}

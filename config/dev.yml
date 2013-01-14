@@ -1,0 +1,6 @@
+db:
+  protocol: mysql
+  host: localhost
+  database: redirector
+  user: user
+  password: secret

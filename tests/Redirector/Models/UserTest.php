@@ -13,13 +13,33 @@ class UserTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
+        // Configure Idiorm ORM
         global $config;
         $db = (object) $config['db'];
-        $dsn = "{$db->protocol}:host={$db->host};dbname={$db->database}";
+        $dsn = (in_array($db->protocol, array('mysql', 'pgsql')))
+          ? "{$db->protocol}:host={$db->host};dbname={$db->database}"
+          : "{$db->protocol}:{$db->database}"; // Probably SQLite
         \ORM::configure($dsn);
-        \ORM::configure('username', $db->user);
-        \ORM::configure('password', $db->password);
+
+        if (isset($db->user)) {
+          \ORM::configure('username', $db->user);
+        }
+        if (isset($db->password)) {
+          \ORM::configure('password', $db->password);
+        }
+
+        $setup = file_get_contents('tests/helpers/create_database.sql');
+        $setup .= file_get_contents('tests/helpers/user_factory.sql');
+
+        ORM::for_table('dummy')->raw_query($setup);
+        echo $setup;
     }
+
+    public static function tearDownAfterClass()
+    {
+        
+    }
+
     protected function setUp()
     {
         $this->user = \Model::factory('\Redirector\Models\User')->create();

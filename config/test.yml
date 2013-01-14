@@ -1,6 +1,3 @@
 db:
-  protocol: mysql
-  host: localhost
-  database: redirector
-  user: root
-  password: kc0nco
+  protocol: sqlite
+  database: /tmp/db.sq3

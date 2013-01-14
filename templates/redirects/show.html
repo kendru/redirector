@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% block title %}Redirect Rule: {{ redirect.alias }}{% endblock %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="form-signin">
+<h2 class="form-signin-heading">Redirect Rule</h2>
+<p>Alias: <em>{{redirect.alias}}</em></p>
+<p>Destination: <em>{{redirect.dest}}</em></p>
+{% if redirect.hits %}
+<p>Hits: 
+    {{redirect.hits}}
+    {% if redirect.hits_qr %}({{redirect.hits_qr}} from QR){% endif %}
+</p>
+{% endif%}
+<p>
+    Created By: {{owner.fname}} {{owner.lname}}
+</p>
+</div>
+
+<div id="qr-codes" class="row-fluid">
+    <header>
+        <h2>QR Codes:</h2>
+        <p class="small"><em>Right-click and select "Save As" to download</em></p>
+    </header>
+    <div class="span3">
+        <a href="{{ fullurl ~ '?source=qr' }}"><img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{ fullurl ~ '?source=qr' | url_encode }}" alt="Small QR" title="Small" /></a>
+    </div>
+    <div class="span3">
+        <a href="{{ fullurl ~ '?source=qr' }}"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{ fullurl ~ '?source=qr' | url_encode }}" alt="Medium QR" title="Medium" /></a>
+    </div>
+    <div class="span3">
+        <a href="{{ fullurl ~ '?source=qr' }}"><img src="https://chart.googleapis.com/chart?chs=450x450&cht=qr&chl={{ fullurl ~ '?source=qr' | url_encode }}" alt="Large QR" title="Large" /></a>
+    </div>
+</div>
+{% endblock %}
