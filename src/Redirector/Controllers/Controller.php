@@ -106,7 +106,6 @@ class Controller
         }
     }
 
-    // TODO
     protected function orVerify($args_as_array, $path = '/')
     {
         if (!is_array($args_as_array) || empty($args_as_array)) {
@@ -133,6 +132,8 @@ class Controller
             }
         }
 
+        //var_dump($messages);
+        //die();
         $this->app->flash('error', implode("<br />\n", $messages));
         $this->redirectWith($path, 'get');
         return false;
@@ -209,7 +210,7 @@ class Controller
         }
     }
 
-    protected function verifyLoggedIn($path = '/admin/sessions/new/')
+    protected function verifyLoggedIn()
     {
         if (!$this->session->isLoggedIn()) {
             return array(false, 'You must be logged-in to do that');

@@ -17,15 +17,15 @@ class UserTest extends PHPUnit_Framework_TestCase
         global $config;
         $db = (object) $config['db'];
         $dsn = (in_array($db->protocol, array('mysql', 'pgsql')))
-          ? "{$db->protocol}:host={$db->host};dbname={$db->database}"
-          : "{$db->protocol}:{$db->database}"; // Probably SQLite
+            ? "{$db->protocol}:host={$db->host};dbname={$db->database}"
+            : "{$db->protocol}:{$db->database}"; // Probably SQLite
         \ORM::configure($dsn);
 
         if (isset($db->user)) {
-          \ORM::configure('username', $db->user);
+            \ORM::configure('username', $db->user);
         }
         if (isset($db->password)) {
-          \ORM::configure('password', $db->password);
+            \ORM::configure('password', $db->password);
         }
 
         $setup = file_get_contents('tests/helpers/create_database.sql');
@@ -37,7 +37,7 @@ class UserTest extends PHPUnit_Framework_TestCase
 
     public static function tearDownAfterClass()
     {
-        
+
     }
 
     protected function setUp()

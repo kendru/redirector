@@ -1,0 +1,3 @@
+db:
+  protocol: sqlite
+  database: ../db/prod.sq3

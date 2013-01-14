@@ -44,19 +44,19 @@ class App
             ? $_ENV['SLIM_MODE']
             : 'dev';
         $this->config = Yaml::parse($realpath . '/config/' . $this->env . '.yml');
-        
+
         // Configure Idiorm ORM
         $db = (object) $this->config['db'];
         $dsn = (in_array($db->protocol, array('mysql', 'pgsql')))
-          ? "{$db->protocol}:host={$db->host};dbname={$db->database}"
-          : "{$db->protocol}:{$db->database}"; // Probably SQLite
+            ? "{$db->protocol}:host={$db->host};dbname={$db->database}"
+            : "{$db->protocol}:{$db->database}"; // Probably SQLite
         \ORM::configure($dsn);
 
         if (isset($db->user)) {
-          \ORM::configure('username', $db->user);
+            \ORM::configure('username', $db->user);
         }
         if (isset($db->password)) {
-          \ORM::configure('password', $db->password);
+            \ORM::configure('password', $db->password);
         }
 
         $twig = new \Slim\Extras\Views\Twig();
@@ -87,7 +87,7 @@ class App
         }
         return self::$instance;
     }
-    
+
     public function run()
     {
         $app = $this->router;
@@ -99,7 +99,12 @@ class App
                 $app->notFound();
             }
         });
-        
+
+        $app->get('/denied/', function() use ($app) {
+            echo "Permission denied.";
+        })->name('denied');
+
+
         $app->get('/:alias/', function($alias) use ($app) {
             $redirect = \Model::factory('\Redirector\Models\Redirect')
                 ->where('alias', $alias)
@@ -120,11 +125,12 @@ class App
                 }
 
                 $app->redirect($redirect->dest);
-            // Redirect not found
+                // Redirect not found
             } else {
                 $app->notFound();
             }
         });
+
 
         $app->get('/admin/:controller/', function($controller_name) use ($app) {
             $classname = 'Redirector\\Controllers\\' . ucfirst(Inflector::camelize($controller_name));
@@ -158,7 +164,7 @@ class App
                 $app->pass();
             }
         })->name('show')->conditions(array('id' => '\d+'));
-        
+
         $app->get('/admin/:controller/edit/:id/', function($controller_name, $id) use ($app) {
             $classname = 'Redirector\\Controllers\\' . ucfirst(Inflector::camelize($controller_name));
             $controller = new $classname($app);

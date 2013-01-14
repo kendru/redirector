@@ -1,6 +1,3 @@
 db:
-  protocol: mysql
-  host: localhost
-  database: redirector
-  user: user
-  password: secret
+  protocol: sqlite
+  database: /home/andrew/workspace/redirector/db/dev.sq3
