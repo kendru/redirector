@@ -1,6 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 include_once 'tests/helpers/config.php';
+include_once 'tests/helpers/classes/FakeSession.php';
 
 use Redirector\Controllers\Controller;
 
@@ -13,7 +14,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->controller = new Controller(new StdClass());
+        $this->controller = new Controller(new \StdClass(), new FakeSession());
     }
 
     public function testRequestMethodDefaultsToGet()

@@ -31,13 +31,17 @@ class UserTest extends PHPUnit_Framework_TestCase
         $setup = file_get_contents('tests/helpers/create_database.sql');
         $setup .= file_get_contents('tests/helpers/user_factory.sql');
 
-        ORM::for_table('dummy')->raw_query($setup);
-        echo $setup;
+        try {
+          // We have to call find_one in order to trigger execution of the SQL
+          ORM::for_table('dummy')->raw_query($setup)->find_one();
+        } catch (\Exception $e) {
+          echo "ERROR: " . $e->getMessage();
+        }
     }
 
     public static function tearDownAfterClass()
     {
-
+      // No tear-down is necessary since we are using an in-memory database
     }
 
     protected function setUp()

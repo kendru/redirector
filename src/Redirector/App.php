@@ -35,9 +35,12 @@ class App
     /** @var Session session access object */
     private $session;
 
-    private function __construct()
+    private function __construct($session_inject = null)
     {
-        $this->session = $session = new Helpers\Session();
+        $this->session = ($session_inject)
+            ? $session_inject
+            : new Helpers\Session();
+        $session = $this->session;
         $realpath = dirname(dirname(__DIR__));
 
         $this->env = isset($_ENV['SLIM_MODE'])

@@ -26,9 +26,9 @@ class Controller
     /** @var Session the session "wrapper" object */
     protected $session;
 
-    public function __construct($app)
+    public function __construct($app, $session = null)
     {
-        $this->session = new Session();
+        $this->session = ($session) ? $session : new Session();
         $this->app = $app;
     }
 
